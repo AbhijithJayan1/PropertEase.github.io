@@ -296,6 +296,8 @@ span {
     
     <div class="col-sm-9" style="width: 100%;">
         <div style="margin: 50px 30px; text-align: center;">
+		<button id="connectButton">Connect MetaMask</button>
+
             </div>
             <div style="display: grid;  grid-template-columns: 1fr 1fr;  row-gap: 20px; margin: 30px 13px 50px 230px;">
                 <label style="text-align: left">Contract ID: </label>
@@ -764,20 +766,29 @@ const ethers = window.ethers;
 		"type": "function"
 	}
 ];
-	async function connect() {
-        if (window.ethereum) {
-          	try {
-				await window.eth_requestAccounts;
-				return new ethers.providers.Web3Provider(window.ethereum);
-          	} 
-			catch (error) {
-            	console.error("User denied account access");
-          	}
-        } 
-		else {
-          console.error("Web3 not found");
-        }
+document.getElementById("connectButton").addEventListener("click", async () => {
+  try {
+    const provider = await connect();
+    console.log("Connected to MetaMask:", provider);
+    // You can perform additional actions after connecting here
+  } catch (error) {
+    console.error("Error connecting to MetaMask:", error);
+    // Handle the error and display an error message to the user
+  }
+});
+async function connect() {
+  if (window.ethereum) {
+    try {
+      await window.ethereum.request({ method: 'eth_requestAccounts' });
+      return new ethers.providers.Web3Provider(window.ethereum);
+    } catch (error) {
+      throw new Error("User denied account access");
     }
+  } else {
+    throw new Error("Web3 not found");
+  }
+}
+
 
 	document.getElementById('pay').addEventListener('click', async (event) => {
 		try {
