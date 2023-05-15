@@ -375,6 +375,31 @@ span {
 });
 
         </script>
+<script>
+document.getElementById("connectButton").addEventListener("click", async () => {
+  try {
+    const provider = await connect();
+    console.log("Connected to MetaMask:", provider);
+    // You can perform additional actions after connecting here
+  } catch (error) {
+    console.error("Error connecting to MetaMask:", error);
+    // Handle the error and display an error message to the user
+  }
+});
+	async function connect() {
+  if (window.ethereum) {
+    try {
+      await window.ethereum.request({ method: 'eth_requestAccounts' });
+      return new ethers.providers.Web3Provider(window.ethereum);
+    } catch (error) {
+      throw new Error("User denied account access");
+    }
+  } else {
+    throw new Error("Web3 not found");
+  }
+}
+
+ </script>
     </div>
   </div>
 </div>
