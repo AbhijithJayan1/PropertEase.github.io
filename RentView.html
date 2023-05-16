@@ -771,6 +771,20 @@ const ethers = window.ethers;
 		"type": "function"
 	}
 ];
+	
+	            function readForm() {
+                c_id = document.getElementById("cid").value;
+                t_id = document.getElementById("tid").value;
+                l_id = document.getElementById("lid").value;
+                p_id = document.getElementById("pid").value;
+                l_wall = document.getElementById("lw").value;
+                rentV = document.getElementById("rent").value;
+                c_date = document.getElementById("date").value;
+                hash = document.getElementById("tx").value;
+                typeV = document.getElementById("type").value;
+
+            }
+	
 document.getElementById("connectButton").addEventListener("click", async () => {
   try {
     const provider = await connect();
