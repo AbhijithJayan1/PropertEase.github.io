@@ -385,6 +385,7 @@ document.getElementById("connectButton").addEventListener("click", async () => {
   try {
     const provider = await connect();
     console.log("Connected to MetaMask:", provider);
+	  alert("Wallet Connected Successfully");
     // You can perform additional actions after connecting here
   } catch (error) {
     console.error("Error connecting to MetaMask:", error);
