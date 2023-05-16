@@ -823,18 +823,7 @@ const urlParam = new URLSearchParams(window.location.search);
 					console.log(txHash['hash']);
 					alert("Transaction complete. Hash: ",txHash['hash']);
 
-					var firebaseConfig = {
-    //   copy your firebase config informations
-        apiKey: "AIzaSyCWlUuCtJMfN-6zc5BhAwpLa1OpPIQqsqk",
-        authDomain: "propert-rental-5669d.firebaseapp.com",
-        databaseURL: "https://propert-rental-5669d-default-rtdb.firebaseio.com",
-        projectId: "propert-rental-5669d",
-        storageBucket: "propert-rental-5669d.appspot.com",
-        messagingSenderId: "680379316651",
-        appId: "1:680379316651:web:c3338e8b66b7b585aebaee"
-  };
-  // initialize firebase
-  firebase.initializeApp(firebaseConfig);
+					
     readForm();
     firebase.database().ref("T_hash/" + document.getElementById("tx").value).set({ 
 			C_ID: c_id,
@@ -878,17 +867,7 @@ const urlParam = new URLSearchParams(window.location.search);
 				document.getElementById("cmplt").addEventListener("click", buttonClick);
 
 				function buttonClick() {
-					alert("hello");
-					const firebaseConfig = {
-						apiKey: "AIzaSyCWlUuCtJMfN-6zc5BhAwpLa1OpPIQqsqk",
-						authDomain: "propert-rental-5669d.firebaseapp.com",
-						databaseURL: "https://propert-rental-5669d-default-rtdb.firebaseio.com",
-						projectId: "propert-rental-5669d",
-						storageBucket: "propert-rental-5669d.appspot.com",
-						messagingSenderId: "680379316651",
-						appId: "1:680379316651:web:c3338e8b66b7b585aebaee"
-					};
-					firebase.initializeApp(firebaseConfig);
+					alert("Rent Completed");
 					firebase.database().ref("Contract/" + CNo1).update({C_stat:"Completed"});
 					alert("Recorded");
                   
