@@ -55,7 +55,7 @@ form.addEventListener('submit', function(event) {
 			var userData = snapshot.val();
 			
           console.log(userData);
-		  window.location.href="AdminDash.html";
+	      window.location.href = "AdminDash.html";
         })
         .catch(function(error) {
           console.log(error.message);
