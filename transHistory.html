@@ -291,7 +291,7 @@ span {
               <th scope="col">Date</th>
               <th scope="col">Amount</th>
               <th scope="col">Type</th>
-              <th scope="col">Landlord_Id</th>
+              <th scope="col">Tenant_Id</th>
               <th scope="col">Property_Id</th>
               <th scope="col">Contract_Id</th>
               <th scope="col">Action</th>
@@ -340,11 +340,11 @@ span {
         
               const date = new Date(childData.date);
               const formattedDate = date.toLocaleDateString();
-              if(childData.T_ID ==regno){
+              if(childData.L_ID ==regno){
 
               const row = "<tr><td>" + childData.Hash + "</td><td>"+ childData.Date + "</td><td>" 
                 + childData.Amount + "</td><td>" + childData.Type + "</td><td>" 
-                + childData.L_ID + "</td><td>" + childData.P_id + "</td><td>" + childData.C_ID + "</td><td>" + childData.Oper
+                + childData.T_ID + "</td><td>" + childData.P_id + "</td><td>" + childData.C_ID + "</td><td>" + childData.Oper
                   + "</td></tr>";
 
               $(row).appendTo('#dataTbl');
