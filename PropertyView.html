@@ -180,6 +180,15 @@ span {
             }
         
             /* Center the table vertically and horizontally */
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Adjust the number of columns as needed */
+    grid-gap: 10px; /* Adjust the gap between grid items as needed */
+  }
+
+  .form input{
+    width: 100%; /* Make input fields and button fill the grid cells */
+  }
 
   </style>
   <script>var regno = sessionStorage.getItem('regno');
@@ -212,7 +221,7 @@ span {
             <h2>Property Details</h2>
             <hr />
             <br />
-            <div class="form">
+            <div class="form" style="text-align:center;">
               Register Number: <input type="text" name="RegNo" id="regno"/> <br /><br />
               Appartment Type:&nbsp; <input type="text" name="type" id="type" /> <br /><br />
               Location: <input type="text" name="loc" id="loc" /> <br /><br />
@@ -226,7 +235,7 @@ span {
               Deposite Amount: <input type="text" name="depo" id="depo" /> <br /><br />
             </div>
         
-            <div class="buttons">
+            <div class="buttons" style="text-align:center;">
               <button id="delete" style="color: white; background-color: red;">DELETE</button>
             
               <button id="back" onclick="window.location.href='propertyList.html'">BACK</button>
