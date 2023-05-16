@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="text/javascript"></script>
   <style>
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 550px}
@@ -297,7 +298,7 @@ span {
     
     <div class="col-sm-9" style="width: 100%;">
       <div class="table-wrapper">
-        <di><br/></di>
+	      <div style="text-align:center;"><button id="connectButton">Connect MetaMask</button></div>
         <table  id='dataTbl' class="fl-table">
           <thead>
             <tr>
@@ -379,6 +380,31 @@ span {
 });
 
         </script>
+	    <script>
+document.getElementById("connectButton").addEventListener("click", async () => {
+  try {
+    const provider = await connect();
+    console.log("Connected to MetaMask:", provider);
+    // You can perform additional actions after connecting here
+  } catch (error) {
+    console.error("Error connecting to MetaMask:", error);
+    // Handle the error and display an error message to the user
+  }
+});
+	async function connect() {
+  if (window.ethereum) {
+    try {
+      await window.ethereum.request({ method: 'eth_requestAccounts' });
+      return new ethers.providers.Web3Provider(window.ethereum);
+    } catch (error) {
+      throw new Error("User denied account access");
+    }
+  } else {
+    throw new Error("Web3 not found");
+  }
+}
+
+ </script>
     </div>
   </div>
 </div>
