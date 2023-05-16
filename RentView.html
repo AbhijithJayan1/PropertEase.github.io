@@ -794,10 +794,10 @@ async function connect() {
   }
 }
 const urlParam = new URLSearchParams(window.location.search);
-            	const CNo1 =urlParams.get('cno');
-            	const pid1=urlParams.get('pid');
-		const lid1=urlParams.get('lid');
-		const tid1=urlParams.get('tid');
+            	const CNo1 =urlParam.get('cno');
+            	const pid1=urlParam.get('pid');
+		const lid1=urlParam.get('lid');
+		const tid1=urlParam.get('tid');
 
 	document.getElementById('pay').addEventListener('click', async (event) => {
 		try {
