@@ -58,7 +58,7 @@ form.addEventListener('submit', function(event) {
           console.log(userData.mail);
      if(userData.mail===email){
       sessionStorage.setItem('regno', regno);
-		  window.location.href = "LandlordDash.html";
+		  window.location.href = "LandLordDash.html";
      }
      else{
       alert("Invalid Credentials");
