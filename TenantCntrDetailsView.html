@@ -878,8 +878,6 @@ var c_id,t_id,l_id,p_id,t_wall,oper,hash,typeV,depos,c_date;
 				document.getElementById("op").value="Deposited";
 				console.log("address:",signer);
 				console.log("isDeposit: ",agreement.isDeposit);
-
-				firebase.initializeApp(firebaseConfig);
     readForm();
     firebase.database().ref("T_hash/" + document.getElementById("tx").value).set({ 
 	C_ID: c_id,
@@ -934,8 +932,6 @@ var c_id,t_id,l_id,p_id,t_wall,oper,hash,typeV,depos,c_date;
 			document.getElementById("tx").value=txHash;
 			document.getElementById("op").value="Withdrawed";
 			const updatedAgreement = await contract.getAgreement(agreementId);
-
-			firebase.initializeApp(firebaseConfig);
 		    readForm();
 		    firebase.database().ref("T_hash/" + document.getElementById("tx").value).set({ 
 			C_ID: c_id,
