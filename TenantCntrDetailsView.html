@@ -423,9 +423,8 @@ span {
             }
 
             const urlParams = new URLSearchParams(window.location.search);
-
-            const CNo =19;
-            const pid=21;//urlParams.get('pid');
+            const CNo =urlParams.get('cno');;
+            const pid=urlParams.get('pid');
             console.log(pid);
             
             document.addEventListener('DOMContentLoaded', (e) => {
@@ -883,9 +882,9 @@ var c_id,t_id,l_id,p_id,t_wall,oper,hash,typeV,depos,c_date;
 				firebase.initializeApp(firebaseConfig);
     readForm();
     firebase.database().ref("T_hash/" + document.getElementById("tx").value).set({ 
-			C_ID: c_id,
-        	T_ID: t_id,
-            L_ID: l_id,
+	C_ID: c_id,
+        T_ID: t_id,
+        L_ID: l_id,
             P_id: p_id,
             T_wallet: t_wall,
             Amount: depos,
@@ -937,19 +936,19 @@ var c_id,t_id,l_id,p_id,t_wall,oper,hash,typeV,depos,c_date;
 			const updatedAgreement = await contract.getAgreement(agreementId);
 
 			firebase.initializeApp(firebaseConfig);
-    readForm();
-    firebase.database().ref("T_hash/" + document.getElementById("tx").value).set({ 
+		    readForm();
+		    firebase.database().ref("T_hash/" + document.getElementById("tx").value).set({ 
 			C_ID: c_id,
-        	T_ID: t_id,
-            L_ID: l_id,
-            P_id: p_id,
-            T_wallet: t_wall,
-            Amount: depos,
-            Date: c_date,
-            Oper: oper,
-            Hash: hash,
-            Type: typeV});
-      alert("Recorded");
+			T_ID: t_id,
+			    L_ID: l_id,
+			    P_id: p_id,
+			    T_wallet: t_wall,
+			    Amount: depos,
+			    Date: c_date,
+			    Oper: oper,
+			    Hash: hash,
+			    Type: typeV});
+		      alert("Recorded");
 			}
 			else{
 				alert("Not Allowed. Insufficient Balance")
