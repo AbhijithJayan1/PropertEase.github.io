@@ -418,8 +418,8 @@ span {
             
             const urlParams = new URLSearchParams(window.location.search);
 
-            const CNo = 19 ;//urlParams.get('cno');
-            const pid= 21;//urlParams.get('pid');
+            const CNo = urlParams.get('cno');
+            const pid= urlParams.get('pid');
             console.log(pid);
 
             document.addEventListener('DOMContentLoaded', (e) => {
@@ -797,6 +797,9 @@ span {
           console.error("Web3 not found");
         }
     }
+	const urlParam = new URLSearchParams(window.location.search);
+	const CNo1 = urlParam.get('cno');
+	const pid1= urlParams.get('pid');
   const activate = async () => {
   const tenantAddress = document.getElementById("tw").value;
   const landlordAddress = document.getElementById("lw").value;
@@ -827,8 +830,7 @@ span {
     // Listen for AgreementCreated event
     contract.on("AgreementCreated", (agreementCount) => {
       alert("Agreement Count: " + agreementCount);
-      document.getElementById("cntrid").value = agreementCount;
-	  var CNo=19;
+      document.getElementById("cntrid").value = agreementCount; 	
 	console.log("inserted");
 	const firebaseConfig = {
                     apiKey: "AIzaSyCWlUuCtJMfN-6zc5BhAwpLa1OpPIQqsqk",
@@ -840,7 +842,7 @@ span {
                     appId: "1:680379316651:web:c3338e8b66b7b585aebaee"
     };
 	firebase.initializeApp(firebaseConfig);
-	firebase.database().ref("Contract/" + CNo).update({C_addr: document.getElementById("cntrid").value,C_stat:"Started"});
+	firebase.database().ref("Contract/" + CNo1).update({C_addr: document.getElementById("cntrid").value,C_stat:"Started"});
 	alert("Recorded");
     });
 	
