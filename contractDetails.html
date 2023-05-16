@@ -254,6 +254,23 @@ span {
             }
         
             /* Center the table vertically and horizontally */
+	  			.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Adjust the number of columns as needed */
+    grid-gap: 10px; /* Adjust the gap between grid items as needed */
+  }
+
+  .form label {
+    grid-column: span 2; /* Span label across two columns */
+  }
+
+  .form input{
+    width: 100%; /* Make input fields and button fill the grid cells */
+  }
+  .form button {
+    grid-column: span 2;
+    width: 100%; /* Make input fields and button fill the grid cells */
+  }
 
   </style>
   <script>var regno = sessionStorage.getItem('regno');
@@ -359,37 +376,38 @@ span {
                 </tbody>
                 </table>
                 </div>
-                <div class="table-wrapper">
-                  <label style="text-align: left">Tenant Wallet Address: </label>
+<div class="table-wrapper">
+					<div class="form">
+                  Tenant Wallet Address: 
                   <input type="text" id="tw" readonly>
-                  <label style="text-align: left">Landlord Wallet Address: </label>
+                  Landlord Wallet Address: 
                   <input type="text" id="lw" readonly>
-                  <label style="text-align: left">Tenant ID: </label>
+                  Tenant ID: 
                   <input type="text" id="tid" readonly>
-                  <label style="text-align: left">Landlord ID: </label>
-                  <input type="text" id="lid" readonly><br> 
-                  <label style="text-align: left">Property ID: </label>
+                  Landlord ID:
+                  <input type="text" id="lid" readonly>
+                  Property ID:
                   <input type="text" id="pid" readonly>
-                  <label style="text-align: left">Start Date: </label>
+                  Start Date: 
                   <input type="date" id="sdate" readonly>
-                  <label style="text-align: left">Ending Date: </label>
+                  Ending Date: 
                   <input type="date" id="ldate" readonly>
-                  <label style="text-align: left">Periods: </label>
+                  Periods:
                   <input type="text" id="prd" readonly>
-                  <label style="text-align: left">Rent: </label>
-                  <input type="text" id="rent" readonly><br>
-                  <label style="text-align: left">Security Deposit: </label>
+                  Rent: 
+                  <input type="text" id="rent" readonly>
+                  Security Deposit: 
                   <input type="text" id="depo" readonly>
-                  <label style="text-align: left">contract id: </label>
+                  contract id: 
                   <input type="text" id="cntrid">
+				</div>
                 </div>
         <div class="col-md-6">
             <div class="container">
                 <div class="buttons">
                   <button onclick="activate()" id="crt">CREATE</button>
-
-                  <button type="button" onclick="getAgreement()">Get Agreement</button><input type="text" id="agreementId">
-                  <button id="back" onclick="window.location.href='mngcontract.html'">BACK</button>
+                  <button id="back" onclick="window.location.href='mngcontract.html'">BACK</button><br>
+				  <button type="button" onclick="getAgreement()">Get Agreement</button><input type="text" id="agreementId">
               </div>
               <div id="agreementDetails">
                 <h3>Agreement Details:</h3><br>
