@@ -793,11 +793,11 @@ async function connect() {
     throw new Error("Web3 not found");
   }
 }
-const urlParams = new URLSearchParams(window.location.search);
-            	const CNo =urlParams.get('cno');
-            	const pid=urlParams.get('pid');
-		const lid=urlParams.get('lid');
-		const tid=urlParams.get('tid');
+const urlParam = new URLSearchParams(window.location.search);
+            	const CNo1 =urlParams.get('cno');
+            	const pid1=urlParams.get('pid');
+		const lid1=urlParams.get('lid');
+		const tid1=urlParams.get('tid');
 
 	document.getElementById('pay').addEventListener('click', async (event) => {
 		try {
@@ -889,7 +889,7 @@ const urlParams = new URLSearchParams(window.location.search);
 						appId: "1:680379316651:web:c3338e8b66b7b585aebaee"
 					};
 					firebase.initializeApp(firebaseConfig);
-					firebase.database().ref("Contract/" + CNo).update({C_stat:"Completed"});
+					firebase.database().ref("Contract/" + CNo1).update({C_stat:"Completed"});
 					alert("Recorded");
                   
               };
