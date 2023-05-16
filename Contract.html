@@ -257,6 +257,23 @@ span {
             }
         
             /* Center the table vertically and horizontally */
+	   .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Adjust the number of columns as needed */
+    grid-gap: 10px; /* Adjust the gap between grid items as needed */
+  }
+
+  .form label {
+    grid-column: span 2; /* Span label across two columns */
+  }
+
+  .form input{
+    width: 100%; /* Make input fields and button fill the grid cells */
+  }
+  .form button {
+    grid-column: span 2;
+    width: 100%; /* Make input fields and button fill the grid cells */
+  }
 
   </style>
   <script>var regno = sessionStorage.getItem('regno');
@@ -288,29 +305,29 @@ span {
         
             <div class="container">
                 <h2>Tenant Details</h2>
-                <div class="form">
-                  Register Number   : <input type="text" name="TRegno" id="TRegno"/> <br /><br />
-                  Name              : <input type="text" name="Tname" id="Tname" /> <br /><br />
-                  Mobile No.        : <input type="text" name="Tmob" id="Tmob" /> <br /><br />
-                  Mail Id           : <input type="text" name="Tmail" id="Tmail" /> <br /><br />
-                  Address           : <input type="text" name="Taddr" id="Taddr"/> <br /><br />
-                  City              : <input type="text" name="Tcity" id="Tcity"/><br ><br />
-                  State             : <input type="text" name="Tstate" id="Tstate"/><br ><br />
-                  Gender            : <input type="text" name="Tgender" id="Tgender"/><br ><br />
-                  Wallet Address    : <input type="text" name="Twallet" id="Twallet"/><br ><br />
+               <div class="form" style="text-align: center;">
+                  Register Number   : <input type="text" name="TRegno" id="TRegno"/> 
+                  Name              : <input type="text" name="Tname" id="Tname" /> 
+                  Mobile No.        : <input type="text" name="Tmob" id="Tmob" /> 
+                  Mail Id           : <input type="text" name="Tmail" id="Tmail" /> 
+                  Address           : <input type="text" name="Taddr" id="Taddr"/> 
+                  City              : <input type="text" name="Tcity" id="Tcity"/>
+                  State             : <input type="text" name="Tstate" id="Tstate"/>
+                  Gender            : <input type="text" name="Tgender" id="Tgender"/>
+                  Wallet Address    : <input type="text" name="Twallet" id="Twallet"/>
                 </div>
 
                 <h2>Landlord Details</h2>
-                <div class="form">
-                  Register Number   : <input type="text" name="LRegno" id="LRegno"/> <br /><br />
-                  Name              : <input type="text" name="Lname" id="Lname" /> <br /><br />
-                  Mobile No.        : <input type="text" name="Lmob" id="Lmob" /> <br /><br />
-                  Mail Id           : <input type="text" name="Lmail" id="Lmail" /> <br /><br />
-                  Address           : <input type="text" name="Laddr" id="Laddr"/> <br /><br />
-                  City              : <input type="text" name="Lcity" id="Lcity"/><br ><br />
-                  State             : <input type="text" name="Lstate" id="Lstate"/><br ><br />
-                  Gender            : <input type="text" name="Lgender" id="Lgender"/><br ><br />
-                  Wallet Address    : <input type="text" name="Lwallet" id="Lwallet"/><br ><br />
+                <div class="form" style="text-align: center;">
+                  Register Number   : <input type="text" name="LRegno" id="LRegno"/> 
+                  Name              : <input type="text" name="Lname" id="Lname" /> 
+                  Mobile No.        : <input type="text" name="Lmob" id="Lmob" /> 
+                  Mail Id           : <input type="text" name="Lmail" id="Lmail" /> 
+                  Address           : <input type="text" name="Laddr" id="Laddr"/> 
+                  City              : <input type="text" name="Lcity" id="Lcity"/>
+                  State             : <input type="text" name="Lstate" id="Lstate"/>
+                  Gender            : <input type="text" name="Lgender" id="Lgender"/>
+                  Wallet Address    : <input type="text" name="Lwallet" id="Lwallet"/>
                 </div>
                 <div class="table-wrapper">
                 <h2>Interested Properties</h2>
