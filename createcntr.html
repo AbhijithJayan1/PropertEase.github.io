@@ -180,6 +180,23 @@ span {
             }
         
             /* Center the table vertically and horizontally */
+	           .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Adjust the number of columns as needed */
+    grid-gap: 10px; /* Adjust the gap between grid items as needed */
+  }
+
+  .form label {
+    grid-column: span 2; /* Span label across two columns */
+  }
+
+  .form input{
+    width: 100%; /* Make input fields and button fill the grid cells */
+  }
+  .form button {
+    grid-column: span 2;
+    width: 100%; /* Make input fields and button fill the grid cells */
+  }
 
   </style>
   <script>var regno = sessionStorage.getItem('regno');
@@ -211,37 +228,37 @@ span {
         <div class="col-md-6">
             <div class="container">
                 <h2>Contract Details</h2>
-                <div class="form">
-                  Contract Number   : <input type="text" name="cno" id="cno" disabled> <br /><br />
-                  Tenant Register Number   : <input type="text" name="TRegno" id="TRegno"/> <br /><br />
-                  Tenant Name              : <input type="text" name="Tname" id="Tname" /> <br /><br />
-                  Tenant Mobile No.        : <input type="text" name="Tmob" id="Tmob" /> <br /><br />
-                  Tenant Mail Id           : <input type="text" name="Tmail" id="Tmail" /> <br /><br />
-                  Tenant Address           : <input type="text" name="Taddr" id="Taddr"/> <br /><br />
-                  Tenant City              : <input type="text" name="Tcity" id="Tcity"/><br ><br />
-                  Tenant State             : <input type="text" name="Tstate" id="Tstate"/><br ><br />
-                  Tenant Gender            : <input type="text" name="Tgender" id="Tgender"/><br ><br />
-                  Tenant Wallet Address    : <input type="text" name="Twallet" id="Twallet"/><br ><br />
-                  Landlord Register Number   : <input type="text" name="LRegno" id="LRegno"/> <br /><br />
-                  Landlord Name                 : <input type="text" name="Lname" id="Lname" /> <br /><br />
-                  Landlord Mobile No.           : <input type="text" name="Lmob" id="Lmob" /> <br /><br />
-                  Landlord Mail Id              : <input type="text" name="Lmail" id="Lmail" /> <br /><br />
-                  Landlord Address              : <input type="text" name="Laddr" id="Laddr"/> <br /><br />
-                  Landlord City                 : <input type="text" name="Lcity" id="Lcity"/><br ><br />
-                  Landlord State                : <input type="text" name="Lstate" id="Lstate"/><br ><br />
-                  Landlord Gender               : <input type="text" name="Lgender" id="Lgender"/><br ><br />
-                  Landlord Wallet Address       : <input type="text" name="Lwallet" id="Lwallet"/><br ><br />
-                  Property Register Number      : <input type="text" name="regno" id="regno"/> <br /><br />
-                  Appartment Type               : <input type="text" name="type" id="type" /> <br /><br />
-                  Location                      : <input type="text" name="loc" id="loc" /> <br /><br />
-                  Interest                      : <input type="text" name="intr" id="intr" /> <br /><br />
-                  Start Date                    : <input type="text" name="sdate" id="sdate" readonly/> <br /><br />
-                  End Date                      : <input type="text" name="ldate" id="ldate" readonly/> <br /><br />
-                  No. of Rent Payments          : <input type="text" name="pd" id="pd" readonly/> <br /><br />
-                  Contract Address              : <input type="text" name="contr" id="contr" readonly> <br /><br />
-                  Contract Status               : <input type="text" name="cstat" id="cstat" readonly/> <br /><br />
-                  Rent                          : <input type="text" name="rent" id="rent" /> <br /><br /> 
-                  Deposite Amount               : <input type="text" name="depo" id="depo" /> <br /><br />
+                <div class="form" style="text-align: center;">
+                  Contract Number   : <input type="text" name="cno" id="cno" disabled> 
+                  Tenant Register Number   : <input type="text" name="TRegno" id="TRegno"/> 
+                  Tenant Name              : <input type="text" name="Tname" id="Tname" /> 
+                  Tenant Mobile No.        : <input type="text" name="Tmob" id="Tmob" /> 
+                  Tenant Mail Id           : <input type="text" name="Tmail" id="Tmail" /> 
+                  Tenant Address           : <input type="text" name="Taddr" id="Taddr"/> 
+                  Tenant City              : <input type="text" name="Tcity" id="Tcity"/>
+                  Tenant State             : <input type="text" name="Tstate" id="Tstate"/>
+                  Tenant Gender            : <input type="text" name="Tgender" id="Tgender"/>
+                  Tenant Wallet Address    : <input type="text" name="Twallet" id="Twallet"/>
+                  Landlord Register Number   : <input type="text" name="LRegno" id="LRegno"/> 
+                  Landlord Name                 : <input type="text" name="Lname" id="Lname" /> 
+                  Landlord Mobile No.           : <input type="text" name="Lmob" id="Lmob" /> 
+                  Landlord Mail Id              : <input type="text" name="Lmail" id="Lmail" /> 
+                  Landlord Address              : <input type="text" name="Laddr" id="Laddr"/> 
+                  Landlord City                 : <input type="text" name="Lcity" id="Lcity"/>
+                  Landlord State                : <input type="text" name="Lstate" id="Lstate"/>
+                  Landlord Gender               : <input type="text" name="Lgender" id="Lgender"/>
+                  Landlord Wallet Address       : <input type="text" name="Lwallet" id="Lwallet"/>
+                  Property Register Number      : <input type="text" name="regno" id="regno"/> 
+                  Appartment Type               : <input type="text" name="type" id="type" /> 
+                  Location                      : <input type="text" name="loc" id="loc" /> 
+                  Interest                      : <input type="text" name="intr" id="intr" /> 
+                  Start Date                    : <input type="text" name="sdate" id="sdate" readonly/> 
+                  End Date                      : <input type="text" name="ldate" id="ldate" readonly/> 
+                  No. of Rent Payments          : <input type="text" name="pd" id="pd" readonly/> 
+                  Contract Address              : <input type="text" name="contr" id="contr" readonly> 
+                  Contract Status               : <input type="text" name="cstat" id="cstat" readonly/> 
+                  Rent                          : <input type="text" name="rent" id="rent" />  
+                  Deposite Amount               : <input type="text" name="depo" id="depo" /> 
                 </div>
                 <div class="buttons">
                   <button id="back" onclick="window.location.href='Contract.html'">BACK</button>
