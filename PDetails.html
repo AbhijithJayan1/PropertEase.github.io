@@ -265,6 +265,23 @@ span {
             }
         
             /* Center the table vertically and horizontally */
+	  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Adjust the number of columns as needed */
+    grid-gap: 10px; /* Adjust the gap between grid items as needed */
+  }
+
+  .form label {
+    grid-column: span 2; /* Span label across two columns */
+  }
+
+  .form input{
+    width: 100%; /* Make input fields and button fill the grid cells */
+  }
+  .form button {
+    grid-column: span 2;
+    width: 100%; /* Make input fields and button fill the grid cells */
+  }
 
   </style>
   <script>var regno = sessionStorage.getItem('regno');
@@ -297,22 +314,36 @@ span {
         <h2>Property Details</h2>
         <hr />
         <br />
-        <div class="form">
-          Register Number: <input type="text" name="Regno" id="Regno"/> <br /><br />
-          Type:&nbsp; <input type="text" name="type" id="type" /> <br /><br />
-          Location : <input type="text" name="loc" id="loc" /> <br /><br />
-          Rent: <input type="text" name="rent" id="rent" /> <br /><br />
-          Deposit: <input type="text" name="depo" id="depo" /> <br /><br />
-          landlord: <input type="text" name="lnd" id="lnd"/> <br /><br />
-          Status: <input type="text" name="stat" id="stat"/><br ><br />
-          Date and Time: <input type="text" name="dat" id="dat"/><br ><br />
-          Start Date: <input type="date" name="sd" id="sd" required><br><br/>
-          periods: <input type="number" name="pd" id="pd" required><br><br/>
-          <button onclick="selectEndDate()">Select End Date</button>
-          End Date: <input type="date" name="ed" id="ed" required readonly><br><br/>
-          Contract Status: <input type="text" name="cntrstat" id="cntrstat"/><br ><br />
-          Contract Number: <input type="text" name="cntrno" id="cntrno"/><br ><br />
-        </div>
+       <div class="form">
+  Register Number:
+  <input type="text" name="Regno" id="Regno" />
+Type:
+  <input type="text" name="type" id="type" />
+Location:
+  <input type="text" name="loc" id="loc" />
+Rent:
+  <input type="text" name="rent" id="rent" />
+Deposit:
+  <input type="text" name="depo" id="depo" />
+Landlord:
+  <input type="text" name="lnd" id="lnd" />
+Status:
+  <input type="text" name="stat" id="stat" />
+Date and Time:
+  <input type="text" name="dat" id="dat" />
+Start Date:
+  <input type="date" name="sd" id="sd" required />
+Periods:
+  <input type="number" name="pd" id="pd" required />
+
+  <button onclick="selectEndDate()">Select End Date</button><br>
+End Date:
+  <input type="date" name="ed" id="ed" required readonly />
+Contract Status:
+  <input type="text" name="cntrstat" id="cntrstat" />
+Contract Number:
+  <input type="text" name="cntrno" id="cntrno" />
+</div>
     
         <div class="buttons">
           <button id="back" onclick="window.location.href='PropertDetails.html'">BACK</button>
