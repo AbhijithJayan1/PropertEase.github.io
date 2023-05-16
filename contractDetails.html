@@ -783,6 +783,10 @@ span {
 		"type": "function"
 	}
 ];
+	const urlParam = new URLSearchParams(window.location.search);
+	const CNo1 = urlParam.get('cno');
+	const pid1= urlParam.get('pid');
+	
 	async function connect() {
         if (window.ethereum) {
           	try {
@@ -797,9 +801,7 @@ span {
           console.error("Web3 not found");
         }
     }
-	const urlParam = new URLSearchParams(window.location.search);
-	const CNo1 = urlParam.get('cno');
-	const pid1= urlParams.get('pid');
+	
   const activate = async () => {
   const tenantAddress = document.getElementById("tw").value;
   const landlordAddress = document.getElementById("lw").value;
