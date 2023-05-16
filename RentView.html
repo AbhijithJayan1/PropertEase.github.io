@@ -365,7 +365,12 @@ span {
                 typeV = document.getElementById("type").value;
 
             }
-			const CNo =19;
+		const urlParams = new URLSearchParams(window.location.search);
+            	const CNo =urlParams.get('cno');
+            	const pid=urlParams.get('pid');
+		const lid=urlParams.get('lid');
+		const tid=urlParams.get('tid');
+		
 		  document.addEventListener('DOMContentLoaded', (e) => {
           const firebaseConfig = {
                 apiKey: "AIzaSyCWlUuCtJMfN-6zc5BhAwpLa1OpPIQqsqk",
@@ -443,16 +448,16 @@ span {
   firebase.initializeApp(firebaseConfig);
     readForm();
     firebase.database().ref("T_hash/" + document.getElementById("tx").value).set({ 
-			C_ID: c_id,
-        	T_ID: t_id,
-            L_ID: l_id,
-            P_id: p_id,
-            L_wallet: l_wall,
-            Amount: rentV,
-            Date: c_date,
-			Oper: "Rent",
-            Hash: hash,
-            Type: typeV});
+	C_ID: c_id,
+        T_ID: t_id,
+        L_ID: l_id,
+        P_id: p_id,
+        L_wallet: l_wall,
+        Amount: rentV,
+        Date: c_date,
+	Oper: "Rent",
+        Hash: hash,
+        Type: typeV});
       alert("Recorded");
 });
 
@@ -788,11 +793,14 @@ async function connect() {
     throw new Error("Web3 not found");
   }
 }
-
+const urlParams = new URLSearchParams(window.location.search);
+            	const CNo =urlParams.get('cno');
+            	const pid=urlParams.get('pid');
+		const lid=urlParams.get('lid');
+		const tid=urlParams.get('tid');
 
 	document.getElementById('pay').addEventListener('click', async (event) => {
 		try {
-			var CNo=19;
 			const provider = await connect();
 			const accounts = await provider.listAccounts();
 			const account = accounts[0];
