@@ -821,6 +821,7 @@ span {
     }
 	
   const activate = async () => {
+if(document.getElementById("cntrid").value==""){
   const tenantAddress = document.getElementById("tw").value;
   const landlordAddress = document.getElementById("lw").value;
   const rentAmount = document.getElementById("rent").value;
@@ -858,7 +859,10 @@ span {
 	
   } catch (error) {
     console.error("Error creating agreement:", error);
-  }
+  }}
+else{
+document.getElementById("crt").disabled = true;	  
+ }
 };
 async function getAgreement() {
         const provider = await connect();
