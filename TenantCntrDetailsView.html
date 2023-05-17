@@ -400,7 +400,7 @@ span {
                 <div class="buttons">
                   <button id="back" onclick="window.location.href='TenantCntrDetails.html'">BACK</button>
                   <button type="button" onclick="payDeposit()">PAY</button>
-		              <button type="button" style="background-color: #df192d;" onclick="withDeposit()">WITHDRAW</button>
+		              <button type="button" style="background-color: #df192d;" id="wd" onclick="withDeposit()">WITHDRAW</button>
 		              <button type="button" onclick="getBalanceApple()" style="background-color: #9112e0;">BALANCE</button><input type="text" id="bal1"><br>
 					</div>
         </div>
@@ -913,7 +913,8 @@ var c_id,t_id,l_id,p_id,t_wall,oper,hash,typeV,depos,c_date;
 		}
 	}
 
-	async function withDeposit() {
+		async function withDeposit() {
+		if(checkdate()==false){
 		const provider = await connect();
 		const signer = provider.getSigner();
 		const contract = new ethers.Contract(contractAddress, abi, signer);
@@ -953,6 +954,29 @@ var c_id,t_id,l_id,p_id,t_wall,oper,hash,typeV,depos,c_date;
 		catch (error) {
 			console.log("Error withdrawing deposit:", error);
 		}
+	}
+	else{
+		alert("Can not withdraw the deposit now...")
+	}
+	}
+	async function checkdate(){
+		const myButton = document.getElementById("wd");
+		const provider = await connect();
+		const signer = provider.getSigner();
+		const contract = new ethers.Contract(contractAddress, abi, signer);
+		const agreementId = document.getElementById("cid").value;
+		const agreement = await contract.getAgreement(agreementId);
+		const ldate = agreement.ldate;
+		const today = new Date();
+		const todayDate = today.toISOString().split("T")[0];
+		console.log("Last date:",ldate,"today:",todayDate);
+		if (ldate != todayDate) {
+			myButton.remove();
+			return true;
+	  	}
+		else{console.log("wrong");
+	return false;
+	}
 	}
 </script>
 <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
