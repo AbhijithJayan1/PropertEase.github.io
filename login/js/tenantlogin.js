@@ -80,3 +80,25 @@ form.addEventListener('submit', function(event) {
 
 
 });
+function resetPassword() {
+  if(document.getElementById('email').value=="")
+  {
+      alert("Enter your mail ID");
+  }
+  else{
+var emailAddress = document.getElementById('email').value;
+var auth = firebase.auth();
+auth.sendPasswordResetEmail(emailAddress)
+  .then(function() {
+    // Password reset email sent successfully
+    alert("Password reset email sent. Please check your inbox.");
+  })
+  .catch(function(error) {
+    // An error occurred. Handle the error here
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorCode, errorMessage);
+    alert("Password reset email could not be sent. Please try again.");
+  });
+}
+}
