@@ -234,6 +234,7 @@ span {
               Ending Date: <input type="date" name="ldate" id="ldate" readonly/> 
               Rent: <input type="text" name="rent" id="rent" /> 
               Deposite Amount: <input type="text" name="depo" id="depo" /> 
+	      <img id="imagePreview" src="" alt="Preview Image">
             </div>
         
             <div class="buttons" style="text-align:center;">
@@ -269,6 +270,9 @@ span {
             document.getElementById("ldate").value = ldate;
             document.getElementById("depo").value = deposit;
             document.getElementById("cntr").value = contractNo;
+	const imagePreview = document.getElementById('imagePreview');
+        imagePreview.src = imgurl;
+        imagePreview.style.display = 'block';
 
             console.log(regNo, type, loc, rent, deposit, interest, tenant, sdate,ldate,contractAddr, contractStatus, contractNo);
             var deleteButton = document.getElementById("delete");
