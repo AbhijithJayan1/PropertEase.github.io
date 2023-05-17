@@ -379,7 +379,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
               const imgurl=childData.image;
 
               // redirect to new page with property details
-              window.location.href = `PDetails.html?reg=${reg}&type=${type}&loc=${loc}&rent=${rent}&depo=${deposit}&landlord=${landlord}&intrst=${intrst}&cntrstat=${cntrstat}&cntrno=${cntrno}&imgurl=${imgurl}`;
+              window.location.href = `PDetails.html?reg=${reg}&type=${type}&loc=${loc}&rent=${rent}&depo=${deposit}&landlord=${landlord}&intrst=${intrst}&cntrstat=${cntrstat}&imgurl=${imgurl}`;
             });
           } else if (childData.interest === "interested" && childData.Tenant === regno) {
             const row = "<tr><td>" + childData.Reg_No + "</td><td>" + childData.type
