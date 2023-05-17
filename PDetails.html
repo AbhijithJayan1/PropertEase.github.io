@@ -343,7 +343,8 @@ Contract Status:
   <input type="text" name="cntrstat" id="cntrstat" />
 Contract Number:
   <input type="text" name="cntrno" id="cntrno" />
-</div>
+</div><br>
+		<div style="width:100%; text-align:center;"><img id="imagePreview" src="" alt="Preview Image"></div>
     
         <div class="buttons">
           <button id="back" onclick="window.location.href='PropertDetails.html'">BACK</button>
@@ -429,7 +430,7 @@ const urlParams = new URLSearchParams(window.location.search);
             const sdate=document.getElementById("sd").value;
             const ldate=document.getElementById("ed").value
             const prd=document.getElementById("pd").value;
-
+const imgurl= urlParams.get('imgurl');
             document.getElementById("Regno").value = regNo;
             document.getElementById("type").value = type;
             document.getElementById("loc").value = loc;
@@ -439,6 +440,9 @@ const urlParams = new URLSearchParams(window.location.search);
             document.getElementById("stat").value = stat;
             document.getElementById("cntrstat").value = cntrstat;
             document.getElementById("cntrno").value = cntrno;
+	const imagePreview = document.getElementById('imagePreview');
+        imagePreview.src = imgurl;
+        imagePreview.style.display = 'block';
 
 
 
