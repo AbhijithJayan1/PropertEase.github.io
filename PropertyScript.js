@@ -8,7 +8,7 @@ function readFom() {
   depoV = document.getElementById("depo").value;
 }
 var Sregno = sessionStorage.getItem('regno');
-
+var imgurl="";
 var database = firebase.database();
 var landlordRef = database.ref("Landlord/"+Sregno);
 var statusRef = landlordRef.child('Status');
@@ -42,7 +42,7 @@ document.getElementById("insert").onclick = function () {
   }
   else if(globalStatusData=="Approved"){
   firebase.database().ref("Owns/" + Sregno).update({[regnum]: true});
-  firebase.database().ref("Property/" + regnum).set({Landlord: Sregno, Reg_No: regnum, type: typeV, location: locV, rent: rentV, deposit: depoV, interest: "", Tenant: "",contract_Status: "Not started", contract_addr: "", TDate:"",contract_No:"",S_date:"",L_date:"",period:""});
+  firebase.database().ref("Property/" + regnum).set({Landlord: Sregno, Reg_No: regnum, type: typeV, location: locV, rent: rentV, deposit: depoV, interest: "", Tenant: "",contract_Status: "Not started", contract_addr: "", TDate:"",contract_No:"",S_date:"",L_date:"",period:"",image: imgurl});
   
 
   alert("Data Inserted");
@@ -62,7 +62,35 @@ document.getElementById("insert").onclick = function () {
   }
 };
 
+function uploadImage() {
+  const fileInput = document.getElementById('imageInput');
+  const file = fileInput.files[0];
+  const storageRef = firebase.storage().ref();
+  const filename = generateFilename(file.name);
+  const imageRef = storageRef.child(filename);
+  const uploadTask = imageRef.put(file);
+  uploadTask.on('state_changed',
+    (snapshot) => {
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      alert('Upload is ' + progress + '% done');
+    },
+    (error) => {
+      alert('Error uploading image:', error);
+    },
+    () => {
+      uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+        imgurl=downloadURL;
+        console.log('Image uploaded. Download URL:', downloadURL);
+      });
+    }
+  );
+}
 
+function generateFilename(originalFilename) {
+  const timestamp = new Date().getTime();
+  const extension = originalFilename.split('.').pop();
+  return timestamp + '.' + extension;
+}
 
 /*
 window.onload = function() {
