@@ -821,7 +821,6 @@ span {
     }
 	
   const activate = async () => {
-if(document.getElementById("cntrid").value==""){
   const tenantAddress = document.getElementById("tw").value;
   const landlordAddress = document.getElementById("lw").value;
   const rentAmount = document.getElementById("rent").value;
@@ -847,7 +846,7 @@ if(document.getElementById("cntrid").value==""){
     await transaction.wait();
 
     console.log("Agreement created successfully");
-
+	  document.getElementById("crt").disabled = true;	
     // Listen for AgreementCreated event
     contract.on("AgreementCreated", (agreementCount) => {
       alert("Agreement Count: " + agreementCount);
@@ -859,10 +858,7 @@ if(document.getElementById("cntrid").value==""){
 	
   } catch (error) {
     console.error("Error creating agreement:", error);
-  }}
-else{
-document.getElementById("crt").disabled = true;	  
- }
+  }
 };
 async function getAgreement() {
         const provider = await connect();
