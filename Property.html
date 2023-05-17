@@ -180,7 +180,23 @@ span {
             }
         
             /* Center the table vertically and horizontally */
+	  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Adjust the number of columns as needed */
+    grid-gap: 10px; /* Adjust the gap between grid items as needed */
+  }
 
+  .form label {
+    grid-column: span 2; /* Span label across two columns */
+  }
+
+  .form input{
+    width: 100%; /* Make input fields and button fill the grid cells */
+  }
+  .form button {
+    grid-column: span 2;
+    width: 100%; /* Make input fields and button fill the grid cells */
+  }
   </style>
   <script>var regno = sessionStorage.getItem('regno');
 </script>
@@ -212,7 +228,7 @@ span {
             <h2>Property Registration</h2>
             <hr />
             <br />
-            <div class="form" >
+            <div class="form" style="text-align:center">
               Register Number: <input type="text" name="RegNo" id="regno" disabled> <br /><br />
               Appartment Type:&nbsp; <input type="text" name="type" id="type" /> <br /><br />
               Location: <input type="text" name="loc" id="loc" /> <br /><br />
