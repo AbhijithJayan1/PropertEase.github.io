@@ -178,6 +178,26 @@ span {
               cursor: pointer;
               border-radius: 4px;
             }
+	              .modal {
+	      display: none;
+	      position: fixed;
+	      z-index: 1;
+	      left: 0;
+	      top: 0;
+	      width: 100%;
+	      height: 100%;
+	      overflow: auto;
+	      background-color: rgba(0, 0, 0, 0.5);
+	    }
+
+	    .modal-content {
+	      background-color: #fefefe;
+	      margin: 15% auto;
+	      padding: 20px;
+	      border: 1px solid #888;
+	      width: 80%;
+	      max-width: 600px;
+	    }
         
             /* Center the table vertically and horizontally */
 .form {
@@ -270,9 +290,28 @@ span {
             document.getElementById("ldate").value = ldate;
             document.getElementById("depo").value = deposit;
             document.getElementById("cntr").value = contractNo;
-	const imagePreview = document.getElementById('imagePreview');
-        imagePreview.src = imgurl;
-        imagePreview.style.display = 'block';
+	    document.getElementById("log").value = log;
+            document.getElementById("lat").value = lat;
+
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.src = imgurl;
+            imagePreview.style.display = 'block';
+            imagePreview.style.width = '500px';
+            imagePreview.style.height = '400px';
+
+            function openModal() {
+                var modal = document.getElementById('myModal');
+                modal.style.display = 'block';
+                var latitude = parseFloat(document.getElementById('lat').value); // Set the latitude value
+      		var longitude = parseFloat(document.getElementById('log').value) // Set the longitude value
+                var mapDiv = document.getElementById('map');
+                mapDiv.innerHTML = `<iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${longitude-0.01}%2C${latitude-0.01}%2C${longitude+0.01}%2C${latitude+0.01}&amp;layer=mapnik"></iframe>`;
+            }
+
+            function closeModal() {
+              var modal = document.getElementById('myModal');
+              modal.style.display = 'none';
+            }
 
             console.log(regNo, type, loc, rent, deposit, interest, tenant, sdate,ldate,contractAddr, contractStatus, contractNo);
             var deleteButton = document.getElementById("delete");
