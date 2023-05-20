@@ -377,9 +377,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
               const intrst=childData.interest;
               const cntrstat=childData.contract_Status;
               const imgurl=childData.image;
+	      const log=childData.log;
+	      const lat=childData.lat;
 
               // redirect to new page with property details
-              window.location.href = `PDetails.html?reg=${reg}&type=${type}&loc=${loc}&rent=${rent}&depo=${deposit}&landlord=${landlord}&intrst=${intrst}&cntrstat=${cntrstat}&imgurl=${imgurl}`;
+              window.location.href = `PDetails.html?reg=${reg}&type=${type}&loc=${loc}&rent=${rent}&depo=${deposit}&landlord=${landlord}&intrst=${intrst}&cntrstat=${cntrstat}&cntrno=${cntrno}&imgurl=${imgurl}&log=${log}&lat=${lat}`;
             });
           } else if (childData.interest === "interested" && childData.Tenant === regno) {
             const row = "<tr><td>" + childData.Reg_No + "</td><td>" + childData.type
@@ -397,10 +399,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
               const intrst=childData.interest;
               const cntrstat=childData.contract_Status;
               const cntrno=childData.contract_No;
-	const imgurl=childData.image;
+	      const imgurl=childData.image;
+	      const log=childData.log;
+	      const lat=childData.lat;
 
               // redirect to new page with property details
-              window.location.href = `PDetails.html?reg=${reg}&type=${type}&loc=${loc}&rent=${rent}&depo=${deposit}&landlord=${landlord}&intrst=${intrst}&cntrstat=${cntrstat}&cntrno=${cntrno}&imgurl=${imgurl}`;
+              window.location.href = `PDetails.html?reg=${reg}&type=${type}&loc=${loc}&rent=${rent}&depo=${deposit}&landlord=${landlord}&intrst=${intrst}&cntrstat=${cntrstat}&cntrno=${cntrno}&imgurl=${imgurl}&log=${log}&lat=${lat}`;
             });
           }
         } else {
