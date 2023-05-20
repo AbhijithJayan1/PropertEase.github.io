@@ -388,6 +388,20 @@ Images:</br><img id="imagePreview" src="" alt="Preview Image"></br>
     }
     console.log(dates);
     }
+	
+	            function openModal() {
+                var modal = document.getElementById('myModal');
+                modal.style.display = 'block';
+                var latitude = parseFloat(document.getElementById('lat').value); // Set the latitude value
+      		var longitude = parseFloat(document.getElementById('log').value) // Set the longitude value
+                var mapDiv = document.getElementById('map');
+                mapDiv.innerHTML = `<iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${longitude-0.01}%2C${latitude-0.01}%2C${longitude+0.01}%2C${latitude+0.01}&amp;layer=mapnik"></iframe>`;
+            }
+
+            function closeModal() {
+              var modal = document.getElementById('myModal');
+              modal.style.display = 'none';
+            }
 
 </script>
 </div></div></div></body></html>
