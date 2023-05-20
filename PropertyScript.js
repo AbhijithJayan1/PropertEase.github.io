@@ -1,37 +1,6 @@
-var regnum, typeV, locV, rentV, depoV;
-
-function readFom() {
-  regnum = document.getElementById("regno").value;
-  typeV = document.getElementById("type").value;
-  locV = document.getElementById("loc").value;
-  rentV = document.getElementById("rent").value;
-  depoV = document.getElementById("depo").value;
-}
-var Sregno = sessionStorage.getItem('regno');
-var imgurl="";
-var database = firebase.database();
-var landlordRef = database.ref("Landlord/"+Sregno);
-var statusRef = landlordRef.child('Status');
-
-statusRef.once('value').then(function(snapshot) {
-  var statusData = snapshot.val();
-  console.log(statusData);
-  globalStatusData = statusData;
-});
-
-window.onload = function() {
-  firebase.database().ref("Property/").orderByKey().limitToLast(1).on("value", function(snapshot) {
-      snapshot.forEach(function(childSnapshot) {
-          var num= childSnapshot.key;
-        document.getElementById("regno").value = ++num;
-        // Do something with the last registration number
-      });
-    });
-  }; 
-
 document.getElementById("insert").onclick = function () {
   readFom();
-  if(regnum=="" || typeV=="" || locV=="" || rentV=="" || depoV=="")
+  if(regnum=="" || typeV=="" || locV=="" || rentV=="" || depoV=="" || latV=="" || logV=="")
   {
     alert("All Data must be filled");
     document.getElementById("regno").value = "";
@@ -39,11 +8,13 @@ document.getElementById("insert").onclick = function () {
     document.getElementById("loc").value = "";
     document.getElementById("rent").value = "";
     document.getElementById("depo").value = "";
+    document.getElementById("log").value = "";
+    document.getElementById("lat").value = "";
   }
   else if(globalStatusData=="Approved"){
   firebase.database().ref("Owns/" + Sregno).update({[regnum]: true});
-  firebase.database().ref("Property/" + regnum).set({Landlord: Sregno, Reg_No: regnum, type: typeV, location: locV, rent: rentV, deposit: depoV, interest: "", Tenant: "",contract_Status: "Not started", contract_addr: "", TDate:"",contract_No:"",S_date:"",L_date:"",period:"",image: imgurl});
-  
+  firebase.database().ref("Property/" + regnum).set({Landlord: Sregno, Reg_No: regnum, type: typeV, location: locV, rent: rentV, deposit: depoV, interest: "", Tenant: "",contract_Status: "Not started", contract_addr: "", TDate:"",contract_No:"",S_date:"",L_date:"",period:"",image: imgurl,lat: latV,log: logV});
+
 
   alert("Data Inserted");
     document.getElementById("regno").value = "";
@@ -51,6 +22,8 @@ document.getElementById("insert").onclick = function () {
     document.getElementById("loc").value = "";
     document.getElementById("rent").value = "";
     document.getElementById("depo").value = "";
+    document.getElementById("log").value = "";
+    document.getElementById("lat").value = "";
   }
   else{
     alert("Landlord "+Sregno+" is not Approved by Admin");
@@ -59,9 +32,10 @@ document.getElementById("insert").onclick = function () {
     document.getElementById("loc").value = "";
     document.getElementById("rent").value = "";
     document.getElementById("depo").value = "";
+    document.getElementById("log").value = "";
+    document.getElementById("lat").value = "";
   }
 };
-
 function uploadImage() {
   const fileInput = document.getElementById('imageInput');
   const file = fileInput.files[0];
