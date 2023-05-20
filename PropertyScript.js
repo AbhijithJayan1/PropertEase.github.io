@@ -1,3 +1,35 @@
+var regnum, typeV, locV, rentV, depoV,logV,latV;
+
+function readFom() {
+  regnum = document.getElementById("regno").value;
+  typeV = document.getElementById("type").value;
+  locV = document.getElementById("loc").value;
+  rentV = document.getElementById("rent").value;
+  depoV = document.getElementById("depo").value;
+  logV = document.getElementById("log").value;
+  latV = document.getElementById("lat").value;
+}
+var Sregno = sessionStorage.getItem('regno');
+var imgurl="";
+var database = firebase.database();
+var landlordRef = database.ref("Landlord/"+Sregno);
+var statusRef = landlordRef.child('Status');
+
+statusRef.once('value').then(function(snapshot) {
+  var statusData = snapshot.val();
+  console.log(statusData);
+  globalStatusData = statusData;
+});
+
+window.onload = function() {
+  firebase.database().ref("Property/").orderByKey().limitToLast(1).on("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+          var num= childSnapshot.key;
+        document.getElementById("regno").value = ++num;
+        // Do something with the last registration number
+      });
+    });
+  };
 document.getElementById("insert").onclick = function () {
   readFom();
   if(regnum=="" || typeV=="" || locV=="" || rentV=="" || depoV=="" || latV=="" || logV=="")
