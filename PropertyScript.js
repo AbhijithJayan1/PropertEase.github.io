@@ -92,6 +92,60 @@ function generateFilename(originalFilename) {
   return timestamp + '.' + extension;
 }
 
+var selectedLatitude;
+    var selectedLongitude;
+    var map;
+
+    function openModal() {
+      var modal = document.getElementById('myModal');
+      modal.style.display = 'block';
+
+      // Load the map when the modal is opened
+      loadMap();
+    }
+
+    function closeModal() {
+      var modal = document.getElementById('myModal');
+      modal.style.display = 'none';
+
+      // Clear the recorded coordinates
+      selectedLatitude = null;
+      selectedLongitude = null;
+      document.getElementById('latitude').textContent = '';
+      document.getElementById('longitude').textContent = '';
+    }
+
+    function loadMap() {
+      var mapContainer = document.getElementById('mapContainer');
+
+      map = L.map(mapContainer).setView([9.9312, 76.2673], 14);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+      }).addTo(map);
+
+      // Add click event listener to the map
+      map.on('click', function (event) {
+        selectedLatitude = event.latlng.lat;
+        selectedLongitude = event.latlng.lng;
+
+        // Update the coordinates on the page
+        document.getElementById('latitude').textContent = selectedLatitude;
+        document.getElementById('longitude').textContent = selectedLongitude;
+      });
+    }
+
+    function recordCoordinates() {
+      if (selectedLatitude && selectedLongitude) {
+        // Perform any desired action with the coordinates
+        console.log('Recorded coordinates:', selectedLatitude, selectedLongitude);
+        document.getElementById('lat').value = selectedLatitude;
+        document.getElementById('log').value = selectedLongitude;
+        closeModal()
+      }
+    }
+    
+
 /*
 window.onload = function() {
 firebase.database().ref("Tenant").orderByKey().limitToLast(1).on("value", function(snapshot) {
