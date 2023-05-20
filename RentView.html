@@ -811,6 +811,39 @@ const urlParam = new URLSearchParams(window.location.search);
             	const pid1=urlParam.get('pid');
 		const lid1=urlParam.get('lid');
 		const tid1=urlParam.get('tid');
+	
+		function calculateMonthlyDays(startDate, periods) {
+		const monthlyDays = [];
+		const date = new Date(startDate);
+		for (let i = 0; i < periods; i++) {
+			const year = date.getFullYear();
+			const month = date.getMonth() + 1;
+			const day = date.getDate();
+			const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+			monthlyDays.push(formattedDate);
+			date.setMonth(date.getMonth() + 1);
+  		}
+		findNextDate(getCurrentDate(), monthlyDays);
+	}
+
+	function findNextDate(currentDate, monthlyDates) {
+		const currentDateObj = new Date(currentDate);
+		const futureDates = monthlyDates.filter(date => new Date(date) > currentDateObj);
+		if (futureDates.length > 0) {
+			futureDates.sort((a, b) => new Date(a) - new Date(b));
+			alert("The Next Payment Date :"+futureDates[0]);
+		} else {
+			console.log("No future date found");
+		}
+	}
+
+	function getCurrentDate() {
+		const date = new Date();
+		const year = date.getFullYear();
+		const month = String(date.getMonth() + 1).padStart(2, '0');
+		const day = String(date.getDate()).padStart(2, '0');
+		return `${year}-${month}-${day}`;
+	}
 
 	document.getElementById('pay').addEventListener('click', async (event) => {
 		try {
@@ -834,6 +867,7 @@ const urlParam = new URLSearchParams(window.location.search);
 					const txHash = await signer.sendTransaction(transactionParams);
 					document.getElementById("tx").value = txHash['hash'];
 					console.log(txHash['hash']);
+					calculateMonthlyDays(agreement.sdate, agreement.period);
 					alert("Transaction complete. Hash: ",txHash['hash']);
 
 					
