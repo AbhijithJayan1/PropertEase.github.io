@@ -343,9 +343,19 @@ Contract Status:
   <input type="text" name="cntrstat" id="cntrstat" readonly>
 Contract Number:
   <input type="text" name="cntrno" id="cntrno" placeholder="Contract Not Started" readonly>
-	       
+Longitude: 
+   <input type="text" name="log" id="log" />
+Latitude: 
+   <input type="text" name="lat" id="lat" /> 
+Images:</br><img id="imagePreview" src="" alt="Preview Image"></br>
+<button onclick="openModal()">Open Map</button>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+       <span class="close" onclick="closeModal()">&times;</span>
+       <div id="map" style="width: 100%; height: 400px;"></div>
+    </div>
+</div>       
 </div><br>
-		<div><img id="imagePreview" src="" alt="Preview Image"></div>
     
         <div class="buttons">
           <button id="back" onclick="window.location.href='PropertDetails.html'">BACK</button>
@@ -428,7 +438,8 @@ const urlParams = new URLSearchParams(window.location.search);
             const cntrstat=urlParams.get('cntrstat');
             const cntrno=urlParams.get('cntrno');
 	    const imgurl= urlParams.get('imgurl');
-	
+	    const log= urlParams.get('log');
+            const lat= urlParams.get('lat');
             const sdate=document.getElementById("sd").value;
             const ldate=document.getElementById("ed").value
             const prd=document.getElementById("pd").value;
@@ -443,11 +454,26 @@ const urlParams = new URLSearchParams(window.location.search);
             document.getElementById("stat").value = stat;
             document.getElementById("cntrstat").value = cntrstat;
             document.getElementById("cntrno").value = cntrno;
-	
+	    document.getElementById("log").value = log;
+            document.getElementById("lat").value = lat;
 	   const imagePreview = document.getElementById('imagePreview');
            imagePreview.src = imgurl;
            imagePreview.style.display = 'block';
+           imagePreview.style.width = '500px';
+           imagePreview.style.height = '400px'
+	 function openModal() {
+                var modal = document.getElementById('myModal');
+                modal.style.display = 'block';
+                var latitude = parseFloat(document.getElementById('lat').value); // Set the latitude value
+      		var longitude = parseFloat(document.getElementById('log').value) // Set the longitude value
+                var mapDiv = document.getElementById('map');
+                mapDiv.innerHTML = `<iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${longitude-0.01}%2C${latitude-0.01}%2C${longitude+0.01}%2C${latitude+0.01}&amp;layer=mapnik"></iframe>`;
+            }
 
+            function closeModal() {
+              var modal = document.getElementById('myModal');
+              modal.style.display = 'none';
+            }
 
 
 
